@@ -9,7 +9,7 @@ function mockasync(data) {
     })
 }
 
-const mockapi = {
+const apimock = {
     login({username, password}) {
         if (password) {
             logged_user = {
@@ -60,4 +60,4 @@ const mockapi = {
     }
 };
 
-export default mockapi;
+export default apimock;

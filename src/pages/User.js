@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import mockapi from "../api/mockapi";
+import AppApi from '~apijs'
 import {Link, useParams} from "react-router-dom";
 
 async function getUserDetails(id) {
-    return await mockapi.getUserDetails(id).then(
+    return await AppApi.getUserDetails(id).then(
         res => res.data
     )
 }

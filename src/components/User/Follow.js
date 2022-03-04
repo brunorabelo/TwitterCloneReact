@@ -1,6 +1,6 @@
 
-import mockapi from "../../api/mockapi";
+import apimock from "../../api/apimock";
 
 export default async function Follow({userId}) {
-    await mockapi.follow(userId)
+    await apimock.follow(userId)
 }

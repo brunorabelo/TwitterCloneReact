@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import mockapi from "../api/mockapi";
+import AppApi from '~apijs'
 import {Link, useParams} from "react-router-dom";
 import UserGeneral from "../components/User/UserGeneral";
 
 async function getAllUsers() {
-    return await mockapi.getAllUsers().then(
+    return await AppApi.getAllUsers().then(
         res => res.data
     )
 }

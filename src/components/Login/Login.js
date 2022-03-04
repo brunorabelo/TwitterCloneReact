@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import "./Login.css"
 import PropTypes from "prop-types";
-import mockapi from "../../api/mockapi";
+import apimock from "../../api/apimock";
 
 async function loginUser(credentials) {
-    return await mockapi.login(credentials).then(
+    return await apimock.login(credentials).then(
         res => {
             return res.data
         }
