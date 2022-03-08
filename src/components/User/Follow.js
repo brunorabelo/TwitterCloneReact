@@ -1,6 +1,5 @@
 
-import apimock from "../../api/apimock";
-
+import AppApi from '~apijs'
 export default async function Follow({userId}) {
-    await apimock.follow(userId)
+    await AppApi.follow(userId)
 }

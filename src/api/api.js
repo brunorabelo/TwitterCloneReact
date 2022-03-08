@@ -1,4 +1,4 @@
-import {user1, user2, user3} from "./db";
+import {all_tweets, followers_table, following_table, user1, user2, user3} from "./db";
 
 var logged_user = null;
 
@@ -25,6 +25,7 @@ const api = {
                 }
             };
         }
+
         return mockasync(logged_user);
     },
     logout() {
@@ -55,8 +56,25 @@ const api = {
         const a = [user1, user2, user3]
         return mockasync(undefined)
     },
+    getUserFollowers(userId) {
+        const followers =followers_table[userId]
+        return mockasync(followers)
+    },
+    getUserFollowing(userId) {
+        return mockasync(following_table[userId])
+    },
     follow(userId) {
-
+        return mockasync({res: ""})
+    },
+    getAllTweets() {
+        return mockasync(all_tweets)
+    },
+    getFollowingTweets(userId) {
+        const following = following_table[userId] || []
+        return mockasync(all_tweets.map(x => following.includes(x.author_id)))
+    },
+    unfollow(userId) {
+        return mockasync({res: ""})
     }
 };
 
