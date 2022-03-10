@@ -1,5 +1,4 @@
 import React from "react";
-import useUser from "../../hooks/useUser";
 
 export default function Welcome(props) {
     const user = props.user

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import useUser from "../hooks/useUser";
 import {useNavigate} from "react-router-dom";
 
 import AppApi from '~apijs'
@@ -9,14 +8,13 @@ async function logoutUser() {
     return await AppApi.logout().then()
 }
 
-export default function LogoutPage() {
+export default function LogoutPage(props) {
     const [loading, setLoading] = useState(true)
-    const {setUser} = useUser()
+    const setUser = props.setUser
     const navigate = useNavigate();
 
 
     useEffect(() => {
-
         logoutUser().then(r => {
             setLoading(false)
             console.log(r)
