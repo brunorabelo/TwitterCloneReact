@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import {Nav, Navbar, NavbarBrand, NavItem, NavLink} from "shards-react";
+import AuthContext from "../../context/AuthContext";
 
 export default function NavBarComponent(props) {
-    const user = props.user
+    const user = useContext(AuthContext)
     const navigate = useNavigate()
     const goHome = function () {
         navigate('/')

@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import AppApi from '~apijs'
 import UserGeneral from "../components/User/UserGeneral";
 import Loading from "../components/Loading/Loading";
 import {Link, useNavigate} from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 function getFollowers(userId) {
     return AppApi.getUserFollowers(userId).then(r => r.data);
@@ -10,7 +11,7 @@ function getFollowers(userId) {
 
 export default function Followers(props) {
     const [loading, setLoading] = useState(true)
-    const user = props.user
+    const user = useContext(AuthContext)
     const [followers, setFollowers] = useState([])
     const navigate = useNavigate()
     // noinspection JSCheckFuncti   onSignatures

@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 import HomeLoggedIn from "../components/Home/HomeLoggedIn";
 import HomeNoLogin from "../components/Home/HomeNoLogin";
 import Welcome from "../components/Welcome/Welcome";
 import Users from "./Users"
 import { Alert } from "shards-react";
+import AuthContext from "../context/AuthContext";
 
 export default function Home(props) {
-    const user = props.user
+    const user = useContext(AuthContext)
 
     return (
         <div>
