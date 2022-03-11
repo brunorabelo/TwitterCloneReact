@@ -1,30 +1,28 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {Card, CardBody, CardSubtitle, CardTitle} from "shards-react";
 
 export default function UserGeneral({userDetails = {}}) {
 
     return (
-        <div>
-            <h1>User {userDetails.username}</h1>
-            <div>
-                <h3>Name: </h3>
-                <p>{userDetails.first_name || "" + userDetails.last_name}</p>
-            </div>
-            <div>
-                <h3>email: </h3>
-                <p>{userDetails.email}</p>
-            </div>
-            <div>
-                <h3>Followers: </h3>
-                <p>{userDetails.followers_number}</p>
-            </div>
-            <div>
-                <h3>Following: </h3>
-                <p>{userDetails.following_number}</p>
-            </div>
-            <div>
-                <Link to={`/users/${userDetails.id}`}>Visit Page</Link>
-            </div>
-        </div>
+        <Card>
+            <Link to={`/users/${userDetails.id}`}>
+                <CardBody>
+                    <CardTitle>
+                        <strong>{userDetails.first_name + " " + userDetails.last_name}</strong>
+                    </CardTitle>
+                    <CardSubtitle>
+                        <Link to={`/users/${userDetails.id}`}>@{userDetails.username}</Link>
+                    </CardSubtitle>
+                    {userDetails.email}<br/>
+                    <strong>Followers: </strong> {userDetails.followers_number}
+                    <div>
+                        <strong>Following: </strong> {userDetails.following_number}
+                    </div>
+                    <div>
+                    </div>
+                </CardBody>
+            </Link>
+        </Card>
     )
 }

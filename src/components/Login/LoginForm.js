@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import "./Login.css"
-import PropTypes from "prop-types";
 import AppApi from '~apijs'
 import Loading from "../Loading/Loading";
 import {useAuthStore} from "../../store/AuthStore";
 import {saveUser} from "../../store/AuthReducer";
 
 async function loginUser(credentials) {
+    console.log("credentials", credentials)
     return await AppApi.login(credentials).then(res => {
         return res.data
     })
@@ -39,11 +39,11 @@ export default function LoginForm({handleLogin}) {
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>Username:</p>
-                    <input type="text" onChange={handleInputOnchange}/>
+                    <input type="text" name="username" onChange={handleInputOnchange}/>
                 </label>
                 <label>
                     <p>Password:</p>
-                    <input type={"password"} onChange={handleInputOnchange}/>
+                    <input name="password" type={"password"} onChange={handleInputOnchange}/>
                 </label>
                 <div>
                     <button type={"submit"}>Submit</button>

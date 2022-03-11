@@ -4,9 +4,9 @@ import {useNavigate} from "react-router-dom";
 import AppApi from '~apijs'
 import Loading from "../components/Loading/Loading";
 import {useAuthStore} from "../store/AuthStore";
-import {saveUser} from "../store/AuthReducer";
+import {logoutUser} from "../store/AuthReducer";
 
-async function logoutUser() {
+async function logoutUserApi() {
     return await AppApi.logout().then()
 }
 
@@ -17,10 +17,10 @@ export default function LogoutPage() {
 
 
     useEffect(() => {
-        logoutUser().then(r => {
+        logoutUserApi().then(r => {
             setLoading(false)
             console.log(r)
-            dispatch(saveUser(null))
+            dispatch(logoutUser())
             navigate('/')
         })
     }, [])

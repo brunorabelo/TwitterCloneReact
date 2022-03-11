@@ -4,7 +4,6 @@ import UserGeneral from "../components/User/UserGeneral";
 import Loading from "../components/Loading/Loading";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuthStore} from "../store/AuthStore";
-
 function getFollowers(userId) {
     return AppApi.getUserFollowers(userId).then(r => r.data);
 }

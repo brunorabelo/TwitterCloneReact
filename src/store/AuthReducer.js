@@ -1,4 +1,5 @@
-export const ACTION_SAVE_USER = "AUTH_STORE/SAVE_USER"
+const ACTION_SAVE_USER = "AUTH_STORE/SAVE_USER"
+const ACTION_LOGOUT_USER = "AUTH_STORE/LOGOUT_USER"
 
 const getUser = () => {
     const authStateString = localStorage.getItem('authState');
@@ -11,6 +12,10 @@ export const saveUser = (user) => ({
     user
 })
 
+export const logoutUser = () => ({
+    type: ACTION_LOGOUT_USER
+})
+
 export const authReducer = (state = initialState, action) => {
     console.log("action", action)
     switch (action.type) {
@@ -18,6 +23,12 @@ export const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.user
+            }
+            break
+        case ACTION_LOGOUT_USER:
+            return {
+                ...state,
+                user:null
             }
         default:
             throw Error("Invalid action")
