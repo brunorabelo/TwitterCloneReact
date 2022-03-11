@@ -1,10 +1,9 @@
 import React from "react";
-import Login from "../components/Login/Login";
+import LoginForm from "../components/Login/LoginForm";
 import {useNavigate} from "react-router-dom";
 
-export default function LoginPage(props) {
-    const setUser = props.setUser
+export default function LoginPage() {
     const navigate = useNavigate();
-    const handleLogin = () => navigate('/');
-    return <Login setUser={setUser} handleLogin={handleLogin}/>
+    const handleOnLoginSuccess = () => navigate('/');
+    return <LoginForm handleLogin={handleOnLoginSuccess}/>
 }

@@ -3,15 +3,16 @@ import AppApi from '~apijs'
 import UserGeneral from "../components/User/UserGeneral";
 import Loading from "../components/Loading/Loading";
 import {Link, useNavigate} from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+import {useAuthStore} from "../store/AuthStore";
 
 function getFollowers(userId) {
     return AppApi.getUserFollowers(userId).then(r => r.data);
 }
 
 export default function Followers(props) {
+    const [authState] = useAuthStore()
+    const {user} = authState
     const [loading, setLoading] = useState(true)
-    const user = useContext(AuthContext)
     const [followers, setFollowers] = useState([])
     const navigate = useNavigate()
     // noinspection JSCheckFuncti   onSignatures

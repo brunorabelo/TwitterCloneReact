@@ -3,14 +3,16 @@ import {useNavigate} from "react-router-dom";
 
 import AppApi from '~apijs'
 import Loading from "../components/Loading/Loading";
+import {useAuthStore} from "../store/AuthStore";
+import {saveUser} from "../store/AuthReducer";
 
 async function logoutUser() {
     return await AppApi.logout().then()
 }
 
-export default function LogoutPage(props) {
+export default function LogoutPage() {
+    const [, dispatch] = useAuthStore()
     const [loading, setLoading] = useState(true)
-    const setUser = props.setUser
     const navigate = useNavigate();
 
 
@@ -18,7 +20,7 @@ export default function LogoutPage(props) {
         logoutUser().then(r => {
             setLoading(false)
             console.log(r)
-            setUser(null)
+            dispatch(saveUser(null))
             navigate('/')
         })
     }, [])
