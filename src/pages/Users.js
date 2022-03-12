@@ -3,7 +3,6 @@ import AppApi from '~apijs'
 import {Link, useParams} from "react-router-dom";
 import UserGeneral from "../components/User/UserGeneral";
 import Loading from "../components/Loading/Loading";
-import {Col, Container, Row} from "shards-react";
 
 async function getAllUsers() {
     return await AppApi.getAllUsers().then(
@@ -27,15 +26,9 @@ export default function User({userId}) {
 
     return (
         <Loading loading={loading}>
-            <Container>
-                {users.map((user) => {
-                    return <Row >
-                        <Col>
-                        <UserGeneral key={user.id} userDetails={user}/>
-                        </Col>
-                    </Row>
-                })}
-            </Container>
+            {users.map((user) => {
+                return <UserGeneral key={user.id} userDetails={user}/>
+            })}
         </Loading>
     )
 }

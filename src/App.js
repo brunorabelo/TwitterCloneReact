@@ -8,27 +8,23 @@ import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/LogoutPage";
 import Followers from "./pages/Followers";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css"
 
 import NavBarComponent from "./components/NavBar/NavBar";
-
+import React from "react";
 
 function App() {
     return (
         <div>
             <BrowserRouter>
                 <NavBarComponent/>
-                <div className="wrapper">
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        <Route path="/login" element={<LoginPage />}/>
-                        <Route path="/logout" element={<LogoutPage />}/>
-                        <Route path="/followers" element={<Followers/>}/>
-                        <Route path="/users" element={<Users/>}/>
-                        <Route path="/users/:userId" element={<User/>}/>
-                    </Routes>
-                </div>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/logout" element={<LogoutPage/>}/>
+                    <Route path="/followers" element={<Followers/>}/>
+                    <Route path="/users" element={<Users/>}/>
+                    <Route path="/users/:userId" element={<User/>}/>
+                </Routes>
             </BrowserRouter>
         </div>
     );

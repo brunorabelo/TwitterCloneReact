@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import {AuthStoreProvider} from "./store/AuthStore";
 import {authReducer, initialState} from "./store/AuthReducer";
 
+
+
 ReactDOM.render(
     <React.StrictMode>
         <AuthStoreProvider initialState={initialState} reducer={authReducer}>

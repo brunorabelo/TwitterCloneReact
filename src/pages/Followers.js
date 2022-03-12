@@ -36,7 +36,6 @@ export default function Followers(props) {
 
     return <div>
         <Loading loading={loading}>
-            <Link to="/">Home</Link>
             <h1>Followers Page</h1>
             {followers.map((follower) => {
 
