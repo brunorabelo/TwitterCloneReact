@@ -1,34 +1,42 @@
-import React, {useContext} from "react";
-import {useNavigate} from "react-router-dom";
+import React, {useContext, useEffect} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
 import {Nav, Navbar, NavbarBrand, NavItem, NavLink} from "shards-react";
 import {useAuthStore} from "../../store/AuthStore";
+import {routesMap} from "../../routes/RoutesMap";
 
 export default function NavBarComponent(props) {
     const [authState] = useAuthStore()
     const {user} = authState
     const navigate = useNavigate()
+    const location = useLocation()
+
     const goHome = function () {
-        navigate('/')
+        navigate(routesMap('home'))
     }
     const goFollowers = function () {
-        navigate('/followers')
+        navigate(routesMap('followers'))
     }
     const goUsers = function () {
-        navigate('/users')
+        navigate(routesMap('users'))
     }
 
-    return <Navbar type="dark" theme="primary" expand="md" >
-        <NavbarBrand style={navbarStyle.item} onClick={goHome}>TwitterClone</NavbarBrand>
+    function linkActive (name) {
+        return (routesMap(name) === location.pathname)
+    }
+
+
+    return <Navbar type="dark" theme="primary" expand="md">
+        <NavbarBrand style={navbarStyle.item}  onClick={goHome}>TwitterClone</NavbarBrand>
         <Nav navbar>
             <NavItem>
-                <NavLink style={navbarStyle.item} onClick={goHome}>
+                <NavLink style={navbarStyle.item} active={linkActive("home")}  onClick={goHome}>
                     Home
                 </NavLink>
             </NavItem>
             {user ?
                 <div>
                     <NavItem>
-                        <NavLink active style={navbarStyle.item} onClick={goFollowers}>
+                        <NavLink active={linkActive("followers")}  style={navbarStyle.item} onClick={goFollowers}>
                             Followers
                         </NavLink>
                     </NavItem>
@@ -37,14 +45,14 @@ export default function NavBarComponent(props) {
                 : <></>}
 
             <NavItem>
-                <NavLink style={navbarStyle.item} onClick={goUsers}>Users</NavLink>
+                <NavLink style={navbarStyle.item} active={linkActive("users")}  onClick={goUsers}>Users</NavLink>
             </NavItem>
         </Nav>
         <Nav navbar className="ml-auto">
             {user ? <div>
                     <NavItem>
                         <NavLink style={navbarStyle.item} onClick={() => {
-                            navigate('/logout')
+                            navigate(routesMap("logout"))
                         }}>
                             Logout
                         </NavLink>
@@ -53,7 +61,7 @@ export default function NavBarComponent(props) {
                 <div>
                     <NavItem>
                         <NavLink style={navbarStyle.item} onClick={() => {
-                            navigate('/login')
+                            navigate(routesMap("login"))
                         }}>
                             Login
                         </NavLink>

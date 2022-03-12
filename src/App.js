@@ -20,7 +20,6 @@ function App() {
             <BrowserRouter>
                 <NavBarComponent/>
                 <div className="wrapper">
-                    <h1>Application</h1>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         <Route path="/login" element={<LoginPage />}/>

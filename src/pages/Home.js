@@ -4,6 +4,7 @@ import HomeLoggedIn from "../components/Home/HomeLoggedIn";
 import HomeNoLogin from "../components/Home/HomeNoLogin";
 import Welcome from "../components/Welcome/Welcome";
 import {useAuthStore} from "../store/AuthStore";
+import {Col, Row, Container} from "shards-react";
 
 export default function Home() {
     const [authState] = useAuthStore()
@@ -11,22 +12,19 @@ export default function Home() {
 
     return (
         <div>
-            <h1>Home</h1>
             {
                 user ?
                     <div>
                         <Welcome user={user}/>
+                        <hr/>
                         <HomeLoggedIn user={user}/>
-                        <Link to="/followers">Followers</Link>
                     </div>
-                    : <div>
-                        {/*<HomeNoLogin/>*/}
-                        <div>Restrito</div>
-                        <Link to="/users">Users</Link>
-                    </div>
+                    : <Container fluid>
+                        <Col>
+                            <h2>Restrito</h2>
+                        </Col>
+                    </Container>
             }
-
-            {/*<Users />*/}
         </div>
     )
 }

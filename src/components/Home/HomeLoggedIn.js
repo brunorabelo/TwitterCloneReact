@@ -28,7 +28,6 @@ export default function HomeLoggedIn(props) {
 
     return <div>
         <Loading loading={loading}>
-            <Link to="/logout">Logout</Link>
             <div>
                 <Timeline tweets={tweets}/>
             </div>

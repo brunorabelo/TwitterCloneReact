@@ -3,6 +3,6 @@ import React from "react";
 export default function Welcome(props) {
     const user = props.user
     return <div>
-        <p><strong>Welcome{user ? " " + user.first_name + "," : ","}</strong></p>
+        <h4><strong>Welcome {user.first_name}</strong></h4>
     </div>
 }
