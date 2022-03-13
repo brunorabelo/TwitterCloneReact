@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from "react";
 import AppApi from '~apijs'
-import UserGeneral from "../components/User/UserGeneral";
+import UserCard from "../components/User/UserCard";
 import Loading from "../components/Loading/Loading";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuthStore} from "../store/AuthStore";
+
 function getFollowers(userId) {
     return AppApi.getUserFollowers(userId).then(r => r.data);
 }
@@ -18,35 +19,37 @@ export default function Followers(props) {
     useEffect(() => {
         let mounted = true
 
-        if (!user) {
-            navigate('/')
-        } else {
-            getFollowers(user.id).then(
-                r => {
-                    if (mounted) {
-                        setLoading(false)
-                        setFollowers(r)
-                    }
+        getFollowers(user.id).then(
+            r => {
+                if (mounted) {
+                    setLoading(false)
+                    setFollowers(r)
                 }
-            )
-        }
+            }
+        )
+
         return () => mounted = false
     }, [user])
 
+    const followersSection = followers.map((follower) => {
 
-    return <div>
+        return <div key={follower.user.id}>
+            <UserCard userDetails={follower.user}/>
+            <div>{follower.date}</div>
+        </div>
+
+    })
+
+    return <section className={"section"}>
         <Loading loading={loading}>
-            <h1>Followers Page</h1>
-            {followers.map((follower) => {
-
-                return <div key={follower.user.id}>
-                    <UserGeneral  userDetails={follower.user}/>
-                    <div>{follower.date}</div>
-                </div>
-
-            })}
+            <h1 className={"title"}>Followers</h1>
+            <section className={"section"}>
+                {
+                    followers?.length ? followersSection : <p>You have no followers</p>
+                }
+            </section>
         </Loading>
-    </div>
+    </section>
 
 
 }

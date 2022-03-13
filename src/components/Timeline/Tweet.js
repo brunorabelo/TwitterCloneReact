@@ -1,5 +1,4 @@
 import React from "react";
-import "./Tweet.css"
 import {Card, CardContainer} from "../commons/Card";
 
 export default function Tweet(props) {
@@ -8,8 +7,10 @@ export default function Tweet(props) {
     const dateObj = new Date(date)
     return <Card>
         <CardContainer>
-            <p>{props.tweet.tweet}</p>
-            <p><strong>{props.tweet.author_name}</strong> at {dateObj.toString()}</p>
+            <div className={"content"}>
+                <p>{props.tweet.tweet}</p>
+                <p><strong>{props.tweet.author_name}</strong> at {dateObj.toString()}</p>
+            </div>
         </CardContainer>
     </Card>
 }

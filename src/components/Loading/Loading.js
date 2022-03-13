@@ -12,7 +12,14 @@ export default function Loading(props) {
         <div></div>
         <div></div>
     </div>
-    return <div>
-        {props.loading ? loadingComponent : props.children}
+
+    const pageLayout = <div className={"hero is-fullheight-with-navbar"}>
+        <div className={"hero-body"}>
+            <div className={"container has-text-centered"}>{loadingComponent}</div>
+        </div>
     </div>
+
+    const children = props.children || <></>
+
+    return (props.loading ? pageLayout : children)
 }

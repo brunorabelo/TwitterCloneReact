@@ -4,6 +4,7 @@ import {useAuthStore} from "../../store/AuthStore";
 import {routesMap} from "../../routes/RoutesMap";
 
 import "./NavBar.css"
+import OnlyAuth from "../Auth/OnlyAuth";
 
 export default function NavBarComponent(props) {
     const [authState] = useAuthStore()
@@ -20,22 +21,23 @@ export default function NavBarComponent(props) {
     const goUsers = function () {
         navigate(routesMap('users'))
     }
+    const goFollowing = function () {
+        navigate(routesMap('following'))
+    }
 
     function linkActive(name) {
         return (routesMap(name) === location.pathname)
     }
 
 
-    return <nav>
+    return <nav className="hero-head" >
         <a onClick={goHome}>Home</a>
-        {user ? <a onClick={goFollowers}>
-                Followers
-            </a>
-            : <></>}
-        <a  onClick={goUsers}>Users</a>
+        <OnlyAuth><a onClick={goFollowers}>Followers</a></OnlyAuth>
+        <OnlyAuth><a onClick={goFollowing}>Following</a></OnlyAuth>
+        <a onClick={goUsers}>Users</a>
         <div className="right">
             {user ?
-                <a  onClick={() => {
+                <a onClick={() => {
                     navigate(routesMap("logout"))
                 }}>
                     Logout

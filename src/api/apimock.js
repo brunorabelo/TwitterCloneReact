@@ -1,4 +1,5 @@
 import {all_tweets, followers_table, following_table, user1, user2, user3} from "./db";
+import {getUser} from "../store/AuthReducer";
 
 var logged_user = null;
 
@@ -8,6 +9,17 @@ function mockasync(data) {
         setTimeout(() => resolve({data: data}), 600)
     })
 }
+
+const a = [user1, user2, user3]
+let users = {}
+a.forEach((user) => {
+    users[user.id] = {user}
+})
+
+function getLoggedUser() {
+    return getUser()
+}
+
 
 const apimock = {
     login({username, password}) {
@@ -28,7 +40,7 @@ const apimock = {
         }
 
         const a = [user1, user2, user3]
-        return mockasync(a[username-1] || user1);
+        return mockasync(a[username - 1] || user1);
     },
     logout() {
         logged_user = null;
@@ -65,7 +77,17 @@ const apimock = {
         return mockasync(following_table[userId])
     },
     follow(userId) {
+        // let loggedUser = getLoggedUser()
+        // if (!loggedUser || !userId)
+        //     return mockasync("error")
+        // debugger
+        // following_table[loggedUser.id].push({user:users[userId], date:"2022-02-02T05:00:00"})
+        // followers_table[userId].push({user:users[loggedUser.id], date:"2022-02-02T05:00:00"})
         return mockasync({res: ""})
+    },
+    checkUserFollowing(userId, userIdToBeChecked) {
+        const res = following_table[userId].filter((following) => following.user.id === userIdToBeChecked)
+        return mockasync(res && res.length > 0)
     },
     getAllTweets() {
         return mockasync(all_tweets)

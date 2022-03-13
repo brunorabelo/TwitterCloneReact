@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AppApi from '~apijs'
 import {Link, useParams} from "react-router-dom";
-import UserGeneral from "../components/User/UserGeneral";
+import UserCard from "../components/User/UserCard";
 import Loading from "../components/Loading/Loading";
 
 async function getAllUsers() {
@@ -27,7 +27,7 @@ export default function User({userId}) {
     return (
         <Loading loading={loading}>
             {users.map((user) => {
-                return <UserGeneral key={user.id} userDetails={user}/>
+                return <UserCard key={user.id} userDetails={user}/>
             })}
         </Loading>
     )

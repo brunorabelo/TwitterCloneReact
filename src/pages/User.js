@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import AppApi from '~apijs'
 import {Link, useParams} from "react-router-dom";
 import Loading from "../components/Loading/Loading";
+import UserDetails from "../components/User/UserDetails";
+import {Card, CardContainer} from "../components/commons/Card";
+import FollowComponent from "../components/Follow/FollowComponent";
 
 async function getUserDetails(id) {
     return await AppApi.getUserDetails(id).then(
@@ -28,31 +31,12 @@ export default function User({userId}) {
 
     return (
         <Loading loading={loading}>
-            <div>
-                <Link to="/users">Users</Link>
-                <h1>User Details</h1>
-                <div>
-                    <h3>Username: </h3>
-                    <p>{userDetails.username}</p>
-                </div>
-                <div>
-                    <h3>Name: </h3>
-                    <p>{userDetails.first_name || "" + userDetails.last_name}</p>
-                </div>
-                <div>
-                    <h3>email: </h3>
-                    <p>{userDetails.email}</p>
-                </div>
-                <div>
-                    <h3>Followers: </h3>
-                    <p>{userDetails.followers_number}</p>
-                </div>
-                <div>
-                    <h3>Following: </h3>
-                    <p>{userDetails.following_number}</p>
-                </div>
-                <button>Follow</button>
-            </div>
+            <Card>
+                <CardContainer>
+                    <UserDetails user={userDetails}/>
+                    <FollowComponent user={userDetails}>Follow</FollowComponent>
+                </CardContainer>
+            </Card>
         </Loading>
     )
 }

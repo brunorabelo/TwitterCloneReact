@@ -3,6 +3,7 @@ const map = {
     home: "/",
     login: "/login",
     followers: "/followers",
+    following: "/following",
     users: "/users",
     user: "/users/:userId",
     logout: "/logout"

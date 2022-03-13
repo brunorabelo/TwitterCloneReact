@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {Card, CardContainer} from "../commons/Card";
 
-export default function UserGeneral({userDetails = {}}) {
+export default function UserCard({userDetails = {}}) {
 
     return (
         <Card>

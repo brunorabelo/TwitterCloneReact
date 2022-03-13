@@ -1,7 +1,7 @@
 const ACTION_SAVE_USER = "AUTH_STORE/SAVE_USER"
 const ACTION_LOGOUT_USER = "AUTH_STORE/LOGOUT_USER"
 
-const getUser = () => {
+export const getUser = () => {
     const authStateString = localStorage.getItem('authState');
     return JSON.parse(authStateString)
 }

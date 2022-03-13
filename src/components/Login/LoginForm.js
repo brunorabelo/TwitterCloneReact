@@ -33,23 +33,41 @@ export default function LoginForm({handleLogin}) {
         if (user) handleLogin()
     }
 
-    return (<div className="login-wrapper">
-        <Loading loading={loading}>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <p>Username:</p>
-                    <input type="text" name="username" onChange={handleInputOnchange}/>
-                </label>
-                <label>
-                    <p>Password:</p>
-                    <input name="password" type={"password"} onChange={handleInputOnchange}/>
-                </label>
-                <div>
-                    <button type={"submit"}>Submit</button>
+    return (<div className="login-wrapper hero is-fullheight-with-navbar">
+            <Loading loading={loading}>
+                <div className={"hero-body"}>
+                    <div className={"container"}>
+                        <div className="card">
+                            <div className="card-content">
+                                <p>Login</p>
+                                <br/>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="field">
+                                        <label className="label">Username</label>
+                                        <input type="text" className="input" name="username"
+                                               onChange={handleInputOnchange}/>
+                                    </div>
+                                    <div className="field">
+                                        <label className="label">Password</label>
+                                        <input className="input" name="password" type="password"
+                                               onChange={handleInputOnchange}/>
+                                    </div>
+
+                                    <div className="field is-grouped">
+                                        <div className="control">
+                                            <button className="button is-link" type={"submit"}>Submit</button>
+                                        </div>
+                                        <div className="control">
+                                            <button className="button is-link is-light">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </Loading>
-    </div>)
+            </Loading>
+        </div>
+    )
 }
 

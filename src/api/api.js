@@ -63,6 +63,9 @@ const api = {
     getUserFollowing(userId) {
         return mockasync(following_table[userId])
     },
+    checkUserFollowing(userId, userIdToBeChecked){
+        return mockasync("")
+    },
     follow(userId) {
         return mockasync({res: ""})
     },
