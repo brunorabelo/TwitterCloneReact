@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/%7BTwitterCloneReact%7D/static/css/main.ed56a0fd.css",
-    "main.js": "/%7BTwitterCloneReact%7D/static/js/main.0775b4c4.js",
+    "main.js": "/%7BTwitterCloneReact%7D/static/js/main.d6852bd3.js",
     "static/js/787.2dba336e.chunk.js": "/%7BTwitterCloneReact%7D/static/js/787.2dba336e.chunk.js",
     "static/media/logo.svg": "/%7BTwitterCloneReact%7D/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/%7BTwitterCloneReact%7D/index.html",
     "main.ed56a0fd.css.map": "/%7BTwitterCloneReact%7D/static/css/main.ed56a0fd.css.map",
-    "main.0775b4c4.js.map": "/%7BTwitterCloneReact%7D/static/js/main.0775b4c4.js.map",
+    "main.d6852bd3.js.map": "/%7BTwitterCloneReact%7D/static/js/main.d6852bd3.js.map",
     "787.2dba336e.chunk.js.map": "/%7BTwitterCloneReact%7D/static/js/787.2dba336e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ed56a0fd.css",
-    "static/js/main.0775b4c4.js"
+    "static/js/main.d6852bd3.js"
   ]
 }
