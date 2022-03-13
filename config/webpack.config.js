@@ -185,7 +185,7 @@ module.exports = function (webpackEnv) {
         }
         return loaders;
     };
-    const _apijs = isEnvDevelopment ? 'apimock.js' : 'api.js';
+    const _apijs = isEnvDevelopment ? 'apimock.js' : 'apimock.js';
     const _apijs_path = path.resolve('./src', 'api', _apijs);
     return {
         target: ['browserslist'],
